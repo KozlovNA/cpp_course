@@ -1,0 +1,27 @@
+==============--16.10--================
+
+3.25 value categories 
+
+правило трех, правило пяти
+
+copy elision
+
+3.31 named return value optimization (для return не использовать std::move)
+
+03.32 путь "туда" легкий, путь "обратно" тяжелый (explicit)
+как с левой стороны сколько угодно???
+
+???что делает дружественные функции???
+   std::ostream &operator<<(std::ostream &stream, IPv4 const &ipv4) const {    //все равно 3 параметра, то есть this передается
+    return stream << static_cast<int>(ipv4.m_comp_1) << '.'
+                  << static_cast<int>(ipv4.m_comp_2) << '.'                    
+                  << static_cast<int>(ipv4.m_comp_3) << '.'
+                  << static_cast<int>(ipv4.m_comp_4) << '\n';
+  }
+???без friend говорит, что 3 аргумента подается
+----------------------------------------
+
+??? че происходит в примере с пакетами typename ... Ts
+??? вариантичное выражение 
+??? reduce / transform
+Решение сложных задач на с++ Герб Саттер стр 211 задача 3.9
