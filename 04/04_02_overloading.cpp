@@ -5,8 +5,6 @@
 #include <cmath>
 #include <type_traits>
 
-////////////////////////////////////////////////////////////////////////////////
-
 template <typename T, typename... Ts>
 consteval double SumofDoubles(T d, Ts... args) {
   return SumofDoubles(args...);
@@ -22,7 +20,6 @@ consteval bool AreEqual(double const &lhs, double const &rhs, double const &e) {
   return (lhs > rhs - e && lhs < rhs + e);
 }
 
-// --- Тесты ---
 consteval void RunTests() {
   constexpr double e = 1e-3;
 
