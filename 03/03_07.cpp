@@ -25,7 +25,7 @@ public:
     if (std::size(list) != 0) {
       m_capacity = std::size(list);
       m_size = std::size(list);
-      m_array = new int[m_size]{};
+      m_array = new int[m_capacity]{};
     } else {
       m_capacity = 0;
       m_size = 0;
@@ -44,7 +44,7 @@ public:
     if (other.m_size != 0) {
       m_capacity = other.m_capacity;
       m_size = other.m_size;
-      m_array = new int[m_size]{};
+      m_array = new int[m_capacity]{};
     } else {
       m_capacity = 0;
       m_size = 0;
@@ -58,7 +58,6 @@ public:
 
   Vector(Vector &&other)
       : m_array(std::exchange(other.m_array, nullptr)),
-
         m_size(std::exchange(other.m_size, 0)),
         m_capacity(std::exchange(other.m_capacity, 0)) {
     std::cout << "Vector:: Vector (4)\n";
@@ -67,31 +66,40 @@ public:
   //  --------------------------------------------------------------------------------
 
   void push_back(int v) {
-    m_size++;
-    if ((!(m_size < m_capacity)) && (m_capacity != 0)) {
-      int *array_t = new int[m_capacity * 2];
-      for (auto j = 0uz; j < m_size - 1; j++) {
-        array_t[j] = m_array[j];
-      }
+    // m_size++;
+    // if ((!(m_size < m_capacity)) && (m_capacity != 0)) {
+    //   int *array_t = new int[m_capacity * 2];
+    //   for (auto j = 0uz; j < m_size - 1; j++) {
+    //     array_t[j] = m_array[j];
+    //   }
 
-      std::swap(m_array, array_t);
+    //   std::swap(m_array, array_t);
 
-      m_capacity *= 2;
+    //   m_capacity *= 2;
 
+    //   delete[] array_t;
+
+    // } else if (m_capacity == 0) {
+
+    //   int *array_t = new int[1];
+
+    //   std::swap(m_array, array_t);
+
+    //   m_capacity++;
+
+    //   delete[] array_t;
+    // }
+
+    // m_array[m_size - 1] = v;
+    if (m_size >= m_capacity) {
+      size_t new_capacity = m_capacity ? m_capacity * 2 : 1;
+      int *array_t = new int[new_capacity];
+      std::copy(m_array, m_array + m_size, array_t);
+      std::exchange(m_array, array_t);
       delete[] array_t;
-
-    } else if (m_capacity == 0) {
-
-      int *array_t = new int[1];
-
-      std::swap(m_array, array_t);
-
-      m_capacity++;
-
-      delete[] array_t;
+      m_capacity = new_capacity;
     }
-
-    m_array[m_size - 1] = v;
+    m_array[m_size++] = v;
   }
 
   //  --------------------------------------------------------------------------------
