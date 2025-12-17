@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------
+education.sh для сборки 
+std::vatiant<std::monostate, double std::pair<double, double>> abc_sol;
+mb std::optional<std::variant<double, std::pair<double, double>>>
+?как работает forwarding reference?
+Decorator: public Entity, private T
+герб сатор задачи 
+kcachegrind - nice 
+коды возврата на ретурне - самый быстрый вариант
+сортировка 100'000 double
