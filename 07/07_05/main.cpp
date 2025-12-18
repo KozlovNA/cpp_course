@@ -74,8 +74,15 @@ static void BM_HybridSort_ReverseSorted(benchmark::State& state) {
 }
 
 BENCHMARK(BM_HybridSort_ReverseSorted)
-    ->Arg(0)   
+    ->Arg(0)
+    ->Arg(1)
+    ->Arg(2)
+    ->Arg(3)
+    ->Arg(4)
     ->Arg(5)
+    ->Arg(6)
+    ->Arg(7)
+    ->Arg(8)
     ->Arg(16)  
     ->Arg(32)
     ->Arg(64)
